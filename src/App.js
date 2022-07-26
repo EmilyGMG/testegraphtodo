@@ -63,7 +63,7 @@ export default function App() {
 
   /*GRAPH*/
   const data = {
-    labels: ['Feitas', 'A fazer'],
+    labels: ['Concluidas', 'Total'],
     datasets: [
       {
         label: '# of Votes',
@@ -73,7 +73,8 @@ export default function App() {
       },
     ],
   };
-  const formated = Number(totalTasks) / Number(totalCompletedTasks) >= 1000 ? 0 : Number(totalTasks) / Number(totalCompletedTasks);
+  const formated =  totalTasks === totalCompletedTasks ? 0 : Number(totalTasks) / Number(totalCompletedTasks) >= 1000 ? 0 : Math.round(Number(totalTasks) / Number(totalCompletedTasks))
+  ;
 
   return (
     <div className={styles.container}>
