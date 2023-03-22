@@ -110,13 +110,20 @@ export default function App() {
                 backgroundColor: '#3636ed',
                 zIndex: 2,
                 position: 'absolute',
-                transition: '1s'
+                transition: '1s',
+                paddingRight: `${(totalCompletedTasks/totalTasks)*100 === 0 ? '0px': '10px'}`,
+                
 
-               }}></div>
+               }}>
+                <p 
+                  className={styles.percentText}
+                  style={{display: `${(totalCompletedTasks/totalTasks)*100 === 0 ? 'none': 'flex'}`,}}
+                >
+                  {(totalCompletedTasks/totalTasks)*100}%
+                </p>
+               </div>
             </div>
-            <p className={styles.percentText}>
-             
-            </p>
+            
           </div>
         }
       </div>
