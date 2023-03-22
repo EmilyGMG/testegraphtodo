@@ -6,10 +6,6 @@ import { Tasks } from './components/Tasks';
 
 import styles from './styles/app.module.css';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 const LOCALSTORAGE_TASKS_KEY = 'todolist-tasks'
 
@@ -61,21 +57,6 @@ export default function App() {
     return tasks.filter(task => task.completed).length
   })
 
-  /*GRAPH*/
-  const data = {
-    labels: ['Concluidas', 'Total'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [totalCompletedTasks, totalTasks],
-        backgroundColor: ['#2F5CC6', '#F89C3A'],
-        borderWidth: 1,
-      },
-    ],
-  };
-  const formated =  totalTasks === totalCompletedTasks ? 0 : Number(totalTasks) / Number(totalCompletedTasks) >= 1000 ? 0 : Math.round(Number(totalTasks) / Number(totalCompletedTasks))
-  ;
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -112,11 +93,29 @@ export default function App() {
         </footer>
         {totalTasks > 0 &&
           <div>
-            <div className={styles.graph}>
-              <Doughnut data={data} />
+            <div 
+              style={{
+                width: '100%',
+                height: '40px', 
+                backgroundColor: '#ff4b4b',
+                 position: 'relative',
+                 zIndex: 1,
+                 borderRadius: 3,
+                 transition: '1s'
+              }}
+            >
+               <div style={{
+                height: '40px',
+                width: `${(totalCompletedTasks/totalTasks)*100}%`,
+                backgroundColor: '#3636ed',
+                zIndex: 2,
+                position: 'absolute',
+                transition: '1s'
+
+               }}></div>
             </div>
             <p className={styles.percentText}>
-              {formated}%
+             
             </p>
           </div>
         }
