@@ -106,7 +106,7 @@ export default function App() {
             >
                <div style={{
                 height: '40px',
-                width: `${(totalCompletedTasks/totalTasks)*100}%`,
+                width: `${((totalCompletedTasks/totalTasks)*100).toFixed(1)}%`,
                 backgroundColor: '#3636ed',
                 zIndex: 2,
                 position: 'absolute',
