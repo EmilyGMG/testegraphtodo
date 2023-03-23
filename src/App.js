@@ -106,7 +106,7 @@ export default function App() {
             >
                <div style={{
                 height: '40px',
-                width: `${((totalCompletedTasks/totalTasks)*100).toFixed(1)}%`,
+                width: `${(Math.round((totalCompletedTasks/totalTasks)*100))}%`,
                 backgroundColor: '#3636ed',
                 zIndex: 2,
                 position: 'absolute',
@@ -119,7 +119,7 @@ export default function App() {
                   className={styles.percentText}
                   style={{display: `${(totalCompletedTasks/totalTasks)*100 === 0 ? 'none': 'flex'}`,}}
                 >
-                  {(totalCompletedTasks/totalTasks)*100}%
+                  {(Math.round((totalCompletedTasks/totalTasks)*100))}%
                 </p>
                </div>
             </div>
